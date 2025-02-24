@@ -1,0 +1,33 @@
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --primary-color: #ffd700;
+    --secondary-color: #333333;
+    --accent-color: #555555;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--secondary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.card {
+    background-color: var(--secondary-color);
+    border-color: var(--accent-color);
+}
+
+.form-control {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-color: var(--secondary-color);
+}

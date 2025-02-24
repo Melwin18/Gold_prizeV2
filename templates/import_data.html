@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/predict">Price Prediction</a></li>
+            <li><a href="/import-data">Import Data</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+    <h1>Gold Import Data</h1>
+    <div id="chart"></div>
+    <script>
+        var chartData = {{ chart_data | tojson }};
+        var dates = chartData.map(d => d.Date);
+        var values = chartData.map(d => d['Values in Rs. Lacs']);
+
+        var trace = {
+            x: dates,
+            y: values,
+            type: 'line'
+        };
+        var layout = {
+            title: 'Gold Import Data Over Years'
+        };
+        Plotly.newPlot('chart', [trace], layout);
+    </script>
+</body>
+</html>

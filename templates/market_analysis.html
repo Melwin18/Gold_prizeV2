@@ -1,0 +1,76 @@
+{% extends 'new_base.html' %}
+
+{% block content %}
+<section class="analysis-section">
+    <h1>Market Analysis</h1>
+    <div class="market-analysis">
+        <h2>Market Analysis</h2>
+        <div class="features">
+            <div class="feature">
+                <img src="path/to/icon1.png" alt="Price Icon">
+                <h3>Latest Price</h3>
+                <p>{{ latest_price }}</p>
+            </div>
+            <div class="feature">
+                <img src="path/to/icon2.png" alt="Average Icon">
+                <h3>Weekly Average</h3>
+                <p>{{ week_avg }}</p>
+            </div>
+            <div class="feature">
+                <img src="path/to/icon3.png" alt="News Icon">
+                <h3>Latest News</h3>
+                <ul>
+                    {% for article in news_data['results'] %}
+                    <li>{{ article['title'] }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Add market analysis content here -->
+</section>
+
+<section class="metrics-section">
+    <h3>Model Performance</h3>
+    <p>Average R² Score: {{ metrics.avg_r2|round(3) }}</p>
+    <div id="error-plot">
+        {{ prediction_plot|safe }}
+    </div>
+</section>
+
+<style>
+.market-analysis {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+}
+
+.feature {
+    text-align: center;
+    width: 150px;
+}
+
+.feature img {
+    width: 50px;
+    height: 50px;
+}
+
+.feature h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.feature p, .feature ul {
+    font-size: 16px;
+}
+</style>
+
+<script>
+    // Add data analysis scripts here
+</script>
+{% endblock %}

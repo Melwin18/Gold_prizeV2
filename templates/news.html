@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold News</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/predict">Price Prediction</a></li>
+            <li><a href="/import-data">Import Data</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+    <h1>Latest Gold News</h1>
+    <ul>
+        {% for item in news %}
+        <li>
+            <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

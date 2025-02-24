@@ -1,0 +1,59 @@
+{% extends 'new_base.html' %}
+
+{% block content %}
+<section class="prediction-section">
+    <h1>Price Prediction</h1>
+    <div class="prediction-form">
+        <form method="POST">
+            <label for="country">Select Country:</label>
+            <select name="country" id="country">
+                {% for country in countries %}
+                <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="year">Enter Year:</label>
+            <input type="number" name="year" id="year" min="2025" required>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <h2>Predicted Gold Prices for {{ country }}</h2>
+    <ul>
+        {% for price in future_prices %}
+        <li>{{ price }}</li>
+        {% endfor %}
+    </ul>
+
+    <style>
+    .prediction-form {
+        background-color: #f8f8f8;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .prediction-form label, .prediction-form input, .prediction-form select, .prediction-form button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .prediction-form button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .prediction-form button:hover {
+        background-color: #0056b3;
+    }
+    </style>
+</section>
+{% endblock %}
